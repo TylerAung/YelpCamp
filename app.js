@@ -24,7 +24,7 @@ const 	commentRoutes 		= require("./routes/comments"),
 //npm install passport passport-local passport-local-mongoose express-session --save
 
 
-mongoose.connect("mongodb+srv://TylerMongoDB:Rasengan519@mongodbcluster-nirov.gcp.mongodb.net/test?retryWrites=true&w=majority/YelpFull", { 
+mongoose.connect("mongodb+srv://TylerMongoDB:Rasengan519@mongodbcluster-nirov.gcp.mongodb.net/test?retryWrites=true&w=majority", { 
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false}).then(() => {
