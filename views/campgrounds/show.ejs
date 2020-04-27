@@ -1,0 +1,72 @@
+<!-- Added directory extension to traverse accordingly -->
+<%- include("../partials/header") %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<p class="lead">Entries</p>
+					<div class="list-group">
+						<li class="list-group-item active">Info 1</li>
+						<li class="list-group-item">Info 2</li>
+						<li class="list-group-item">Info 3</li>
+						
+					</div>
+					<a class="btn btn-warning btn-lg btn-block" href="/campgrounds">Back to Entries</a>
+			</div>
+				<div class="col-md-9">
+					<div class="thumbnail">
+						<img class="img-responsive" src="<%=campgrounds.image%>">
+						<div class="caption-full">
+							<h4 class="pull-right">SGD $<%=campgrounds.price%></h4>
+							<h4><a href=""><%=campgrounds.name%></a></h4>
+							<p><%=campgrounds.desc%></p>
+							<!-- 	Reads data from author object is DB	 -->
+							<p>
+								Submitted By: 
+								<strong>	<%=campgrounds.author.username%>
+								</strong>
+							</p>
+<!-- CurrentUser && = ensures there's currentuser before code is ran further -->
+							<%if(CurrentUser && campgrounds.author.id.equals(CurrentUser._id)){%>
+<!-- display edit & delete button only to authorize user -->
+							
+							<a class ="btn btn-xs btn-warning" href="/campgrounds/<%=campgrounds._id%>/edit">Edit Entry</a>
+							<!-- Need to user <form></form> to delete, because of action & method attributes need to delete -->
+							<!-- 	Form action in example is "/campgrounds/=campgrounds._id%>.. but that gives me error	 -->
+							<form class="delete-form" action="<%=campgrounds._id%>/?_method=DELETE" method="POST">
+								<button class="btn btn-xs btn-danger">
+									Delete Entry
+								</button>
+								<%}%>
+							</form>
+						</div>
+					</div>
+					<div  class="well">
+						<div class="text-right">
+							<a class="btn btn-success" href="/campgrounds/<%=campgrounds._id%>/comments/new">Leave Review</a>
+						</div>
+						<hr>
+						<!-- loop through all the comments in the DB and display it on the show page -->
+						<% campgrounds.comments.forEach(function(comment){ %>
+	<div class="row">
+		<div class="col-md-12">	
+			<strong><%=comment.author.username%></strong>
+			<span class="pull-right">Sometime ago</span>
+			<p><%= comment.text%></p>
+			
+			<!-- Comments Authorization -->
+			<%if(CurrentUser && comment.author.id.equals(CurrentUser._id)){%>
+			<a class="btn btn-xs btn-warning" href="/campgrounds/<%=campgrounds._id%>/comments/<%=comment._id%>/edit">
+				Edit Comment
+			</a>
+			<form action="/campgrounds/<%=campgrounds._id%>/comments/<%=comment._id%>?_method=DELETE" class="delete-form" method="POST">
+				<input type="submit" class="btn btn-xs btn-danger" value="Delete">
+			</form>
+			<%}%>
+		</div>
+	</div>
+<% }) %>
+					</div>
+				</div>
+		</div>
+	</div>
+<%- include("../partials/footer") %>

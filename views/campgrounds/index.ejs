@@ -1,0 +1,82 @@
+<!-- Added directory extension to traverse accordingly -->
+<%- include("../partials/header") %>
+<!-- Hero Image Class -->
+<header class="jumbotron">
+	<div class=container>
+		
+	<% if(!CurrentUser){%>
+	<h1>
+	Please Login
+	</h1>
+	<p>
+		 No User Login
+	</p>
+	<%} else {%>
+	<h1>
+	<%=CurrentUser.username%> Journal
+	</h1>
+	<p>
+		 Welcome to the life story of <%=CurrentUser.username%>
+	</p>
+	<%}%>
+	
+	
+	</br>
+		<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add Journal Entry</a>
+</br>
+	
+	</div>
+	
+</header>
+
+<div class=container>
+	
+<div class="row">
+	
+	
+<!-- style="display: flex; flex-wrap: wrap;" Helps to align item in grid -->
+<div class="row" style="display: flex; flex-wrap: wrap;">
+<% campgrounds.forEach(function(cam){ %>
+	<div class="col-md-3 col-sm-6">
+		<div class='thumbnail'>
+		<!-- <p>
+			Camp Image:
+		</p> -->
+		<img src="<%=cam.image%>">
+			<div class="caption">
+			<h4>
+			Entry: <strong><%=cam.name%></strong>
+			</h4>
+				<p>
+<!-- 		Route template for every diff ID		 -->
+					<a href="/campgrounds/<%=cam._id%>" class="btn btn-primary">More Info</a>
+				</p>
+			</div>
+		</div>
+		</div>
+
+	
+<% }) %>
+		
+	</div>
+	</div>
+
+<a href="/">Back</a>
+<!-- </div>
+
+<h5>
+		Technologies Used:
+	</h5>
+<div class="row">
+<div class="col-md-2 col-sd-4">
+	<img src="https://miro.medium.com/max/766/1*uPL1uCtLBRSk6akPL2hNzg.jpeg" class="img-responsive img-rounded" style="max-width: 150px; max-height: 150px;">
+	</div>
+	<div class="col-md-2 col-sd-4">
+	<img src="https://miro.medium.com/max/960/1*pxfq-ikL8zPE3RyGB2xbng.png" class="img-responsive img-rounded" style="max-width: 150px; max-height: 150px;">
+		</div>
+		<div class="col-md-2 col-sd-4">
+	<img src="https://www.pngkit.com/png/detail/142-1424481_should-the-entire-code-be-rewritten-and-is.png" style="max-width: 150px; max-height: 150px;">
+		</div>
+	 </div>
+	</div> -->
+<%- include("../partials/footer") %>

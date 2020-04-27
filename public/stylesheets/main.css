@@ -1,0 +1,100 @@
+/* body {
+	background-color: #812828;
+} */
+
+.thumbnail img {
+	width: 100%;
+}
+
+.thumbnail {
+	padding: 0;
+}
+
+.thumbnail .caption-full {
+	padding: 9px;
+}
+.delete-form{
+	display: inline;
+}
+.navbar {
+	z-index: 2;
+	position: relative;
+	
+}
+/* landing page css */
+#landing-header {
+  z-index: 1; /* z-index, forward or backward, and layer ontop of others that have a z index of smaller than 1 */
+  position: relative;/* to use z-index, need to change position away from static */
+  text-align: center;
+  padding-top: 40vh; /* vh = view height */
+}
+
+#landing-header h1 {
+  color: #000;
+}
+/* position to top left corner of page */
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0; 	/* position to top left corner of page */
+  left: 0; /* position to top left corner of page */
+  z-index: 0; /* Ensure current content is behind other elements that have a z-index of 1  & above*/
+  list-style: none; /* remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%; /* center background to center of page */
+  background-repeat: no-repeat;
+  opacity: 0; /* to create fadeout effect */
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+	/* imageAnimation can be anything, as long as is the name of effect created  */
+/* 50s linear, ensure is same speed from beginning to end, infinite, makes background animation forever */
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://wallpapercave.com/download/world-of-warcraft-backgrounds-uNM9Rfh) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://wallpapercave.com/download/monster-hunter-background-pc-wp3276104);
+  animation-delay: 10s;  /* make animation starts at the 10th sec */
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://wallpapercave.com/download/bayonetta-2-wallpapers-wp3151487);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://wallpapercave.com/download/monster-hunter-world-iceborne-pc-wallpapers-wp5170511);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://wallpapercave.com/download/angel-falls-wallpapers-wp4103099);
+  animation-delay: 40s; 
+}
+
+/* Makes transition fades in & out, lesson 370, read again  */
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}

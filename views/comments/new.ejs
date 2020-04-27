@@ -1,0 +1,30 @@
+<!-- Added directory extension to traverse accordingly -->
+<%- include("../partials/header") %>
+<div class="container">
+	<div class="row">
+			
+<h1 style="text-align: center;">
+	Add Review To: <%= campgrounds.name %>
+</h1>
+		<div style="width:30%; margin: 40px auto;">
+			<form action="/campgrounds/<%=campgrounds._id%>/comments" method="POST">
+				<!-- <div class="form-group">
+				<input class="form-control" type="text" name="comment[author]" placeholder="Name">
+				</div> -->
+				<div class="form-group">
+				<input class="form-control" type="text" name="comment[text]" placeholder="Write comments here...">
+				</div>
+				
+					<div class="form-group">
+				<button class="btn btn-lg btn-primary btn-block">
+					Add Review
+				</button>
+					</div>
+
+			</form>
+				<a class="btn btn-warning btn-lg btn-block" href="/campgrounds">Back to Previous Entry</a>
+			</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>
