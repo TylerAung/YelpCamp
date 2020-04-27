@@ -24,7 +24,14 @@ const 	commentRoutes 		= require("./routes/comments"),
 //npm install passport passport-local passport-local-mongoose express-session --save
 
 
-mongoose.connect("mongodb://localhost/YelpFullV1", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect("mongodb+srv://TylerMongoDB:Rasengan519@mongodbcluster-nirov.gcp.mongodb.net/test?retryWrites=true&w=majority/YelpFull", { 
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false}).then(() => {
+	console.log("DB Connected!");
+}).catch(err => {
+	console.log("Error" +err.message);
+});
 // findOneAndUpdate: false, findOneAndDelete: false
 app.use(bodyParser.urlencoded({extened: true}));
 
